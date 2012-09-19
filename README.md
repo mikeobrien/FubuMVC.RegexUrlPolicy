@@ -1,7 +1,7 @@
 FubuMVC Regex Url Policy
 =============
 
-The fubu regex url policy allows you to use regular expressions to ignore/include portions of the url as well as constraining actions to verbs. The following demonstrates how to apply the policy.
+The [FubuMVC](http://mvc.fubu-project.org/) regex url policy allows you to use regular expressions to ignore/include portions of the url as well as constraining actions to verbs. The following demonstrates how to apply the policy:
         
     public class Conventions : FubuRegistry
     {        
