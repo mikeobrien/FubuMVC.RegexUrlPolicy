@@ -14,7 +14,7 @@ assemblyinfo :assemblyInfo do |asm|
     asm.product_name = "FubuMVC Regex Url Policy"
     asm.title = "FubuMVC Regex Url Policy"
     asm.description = "FubuMVC Regex Url Policy."
-    asm.copyright = "Copyright (c) 2012 Ultraviolet Catastrophe"
+    asm.copyright = "Copyright (c) #{Time.now.year} Ultraviolet Catastrophe"
     asm.output_file = "src/RegexUrlPolicy/Properties/AssemblyInfo.cs"
 end
 
