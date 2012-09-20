@@ -28,9 +28,14 @@ namespace FubuMVC.RegexUrlPolicy
             return this;
         }
 
+        public RegexUrlPolicyDsl IgnoreNamespace(Type type)
+        {
+            return IgnoreNamespaces(type.Namespace);
+        }
+
         public RegexUrlPolicyDsl IgnoreNamespace<T>()
         {
-            return IgnoreNamespaces(typeof(T).Namespace);
+            return IgnoreNamespace(typeof(T));
         }
 
         public RegexUrlPolicyDsl IgnoreAssemblyNamespace(Type type)

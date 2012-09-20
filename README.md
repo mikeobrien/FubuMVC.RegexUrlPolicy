@@ -32,12 +32,13 @@ Policy DSL
 The policy DSL contains the following methods:
   
     IgnoreNamespace()
-    IgnoreNamespaces(params string[] patterns)
     IgnoreNamespace<T>()
+    IgnoreNamespace(Type type)
+    IgnoreNamespaces(params string[] patterns)
 
-    IgnoreAssemblyNamespace(Type type)
-    IgnoreAssemblyNamespace<T>()
     IgnoreAssemblyNamespace()
+    IgnoreAssemblyNamespace<T>()
+    IgnoreAssemblyNamespace(Type type)
 
     IgnoreClassName()
     IgnoreClassNames(params string[] patterns)
