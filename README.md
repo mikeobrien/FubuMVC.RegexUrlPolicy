@@ -26,10 +26,10 @@ Installation
 
     PM> Install-Package FubuMVC.RegexUrlPolicy  
 
-Policy Dsl
+Policy DSL
 ------------
 
-The policy Dsl contains the following methods:
+The policy DSL contains the following methods:
   
     IgnoreNamespace()
     IgnoreNamespaces(params string[] patterns)
