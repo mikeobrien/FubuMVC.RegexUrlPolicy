@@ -107,6 +107,66 @@ namespace FubuMVC.RegexUrlPolicy
             return this;
         }
 
+        public RegexUrlPolicyDsl ConstrainNamespaceToGetStartingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToGet(Configuration.Segment.Namespace, patterns.Select(RegexStartingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToPostStartingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToPost(Configuration.Segment.Namespace, patterns.Select(RegexStartingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToPutStartingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToPut(Configuration.Segment.Namespace, patterns.Select(RegexStartingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToUpdateStartingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToUpdate(Configuration.Segment.Namespace, patterns.Select(RegexStartingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToDeleteStartingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToDelete(Configuration.Segment.Namespace, patterns.Select(RegexStartingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToGetEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToGet(Configuration.Segment.Namespace, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToPostEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToPost(Configuration.Segment.Namespace, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToPutEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToPut(Configuration.Segment.Namespace, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToUpdateEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToUpdate(Configuration.Segment.Namespace, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainNamespaceToDeleteEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToDelete(Configuration.Segment.Namespace, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
         public RegexUrlPolicyDsl ConstrainClassToGet(params string[] patterns)
         {
             _configuration.ConstrainToGet(Configuration.Segment.Class, patterns);
@@ -254,7 +314,37 @@ namespace FubuMVC.RegexUrlPolicy
         public RegexUrlPolicyDsl ConstrainMethodToDeleteStartingWith(params string[] patterns)
         {
             _configuration.ConstrainToDelete(Configuration.Segment.Method, patterns.Select(RegexStartingWith).ToArray());
-            return this; 
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainMethodToGetEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToGet(Configuration.Segment.Class, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainMethodToPostEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToPost(Configuration.Segment.Method, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainMethodToPutEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToPut(Configuration.Segment.Method, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainMethodToUpdateEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToUpdate(Configuration.Segment.Method, patterns.Select(RegexEndingWith).ToArray());
+            return this;
+        }
+
+        public RegexUrlPolicyDsl ConstrainMethodToDeleteEndingWith(params string[] patterns)
+        {
+            _configuration.ConstrainToDelete(Configuration.Segment.Method, patterns.Select(RegexEndingWith).ToArray());
+            return this;
         }
 
         private static string RegexStartingWith(string value)
