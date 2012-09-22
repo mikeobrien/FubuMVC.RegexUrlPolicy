@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Hosting;
 using FubuMVC.Core.Continuations;
@@ -21,6 +22,16 @@ namespace FubuMVC.RegexUrlPolicy
         {
             prefix.ToList().ForEach(x => expression.IncludeMethods(y => y.Name.StartsWith(x)));
             return expression;
+        }
+
+        public static bool IsInThisAssembly(this ActionCall call)
+        {
+            return call.HandlerType.Assembly == Assembly.GetCallingAssembly();
+        }
+
+        public static bool IsInAssembly<T>(this ActionCall call)
+        {
+            return call.IsInAssembly(typeof(T));
         }
 
         public static bool IsInAssembly(this ActionCall call, Type type)
