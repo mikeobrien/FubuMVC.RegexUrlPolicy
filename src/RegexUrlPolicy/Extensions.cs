@@ -14,13 +14,13 @@ namespace FubuMVC.RegexUrlPolicy
     {
         public static ActionCallCandidateExpression IncludeTypeNamesSuffixed(this ActionCallCandidateExpression expression, params string[] suffix)
         {
-            suffix.ToList().ForEach(x => expression.IncludeTypes(y => y.Name.EndsWith(x)));
+            expression.FindBy(x => x.IncludeTypes(y => suffix.Any(z => y.Name.EndsWith(z))));
             return expression;
         }
 
         public static ActionCallCandidateExpression IncludeMethodsPrefixed(this ActionCallCandidateExpression expression, params string[] prefix)
         {
-            prefix.ToList().ForEach(x => expression.IncludeMethods(y => y.Name.StartsWith(x)));
+            expression.FindBy(x => x.IncludeMethods(y => prefix.Any(z => y.Name.StartsWith(z))));
             return expression;
         }
 

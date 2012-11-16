@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using FubuCore.Reflection;
-using FubuMVC.Core.Diagnostics;
 using FubuMVC.Core.Registration.Conventions;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Registration.Routes;
@@ -39,7 +38,7 @@ namespace FubuMVC.RegexUrlPolicy
             return new RegexUrlPolicy(matchFilter, configuration);
         }
 
-        public bool Matches(ActionCall call, IConfigurationObserver log)
+        public bool Matches(ActionCall call)
         {
             return _matchFilter(call);
         }

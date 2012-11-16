@@ -73,7 +73,7 @@ nuspec :createSpec => :prepPackage do |nuspec|
    nuspec.working_directory = packagePath
    nuspec.output_file = nuspecFilename
    nuspec.tags = "fubumvc"
-   nuspec.dependency "FubuMVC.References", "0.9.0.0"
+   nuspec.dependency "FubuMVC.References", "0.9.9.0"
 end
 
 nugetpack :createPackage => :createSpec do |nugetpack|
