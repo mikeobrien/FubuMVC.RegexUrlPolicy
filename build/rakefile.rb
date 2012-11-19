@@ -5,8 +5,8 @@ require_relative "gallio-task"
 reportsPath = "reports"
 version = ENV["BUILD_NUMBER"]
 
-task :build => :createPackage
-task :deploy => :pushPackage
+task :build => :pushLocalPackage
+task :deploy => :pushPublicPackage
 
 assemblyinfo :assemblyInfo do |asm|
     asm.version = version
@@ -45,15 +45,19 @@ end
 
 nugetApiKey = ENV["NUGET_API_KEY"]
 deployPath = "deploy"
+artifactsPath = 'artifacts'
 
 packagePath = File.join(deployPath, "package")
 nuspecFilename = "FubuMVC.RegexUrlPolicy.nuspec"
 packageLibPath = File.join(packagePath, "lib")
 binPath = "src/RegexUrlPolicy/bin/release"
+packageFilePath = File.join(deployPath, "FubuMVC.RegexUrlPolicy.#{version}.nupkg")
 
 task :prepPackage => :unitTests do
 	FileSystem.DeleteDirectory(deployPath)
 	FileSystem.EnsurePath(packageLibPath)
+	FileSystem.DeleteDirectory(artifactsPath)
+    FileSystem.EnsurePath(artifactsPath)
 	FileSystem.CopyFiles(File.join(binPath, "FubuMVC.RegexUrlPolicy.dll"), packageLibPath)
 	FileSystem.CopyFiles(File.join(binPath, "FubuMVC.RegexUrlPolicy.pdb"), packageLibPath)
 end
@@ -82,7 +86,11 @@ nugetpack :createPackage => :createSpec do |nugetpack|
    nugetpack.output = deployPath
 end
 
-nugetpush :pushPackage => :createPackage do |nuget|
+task :pushLocalPackage => :createPackage do
+	FileSystem.CopyFiles(packageFilePath, artifactsPath)
+end
+
+nugetpush :pushPublicPackage => :createPackage do |nuget|
     nuget.apikey = nugetApiKey
-    nuget.package = File.join(deployPath, "FubuMVC.RegexUrlPolicy.#{version}.nupkg").gsub('/', '\\')
+    nuget.package = packageFilePath.gsub('/', '\\')
 end
