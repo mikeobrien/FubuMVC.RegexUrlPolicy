@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Hosting;
 using FubuMVC.Core.Continuations;
+using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.DSL;
 using FubuMVC.Core.Registration.Nodes;
 using System.Web.Routing;
@@ -10,14 +11,16 @@ namespace FubuMVC.RegexUrlPolicy
 {
     public static class Extensions
     {
-        public static ActionCallCandidateExpression IncludeTypeNamesSuffixed(this ActionCallCandidateExpression expression, params string[] suffix)
+        public static ActionSource IncludeTypeNamesSuffixed(this ActionSource source, params string[] suffix)
         {
-            return expression.FindBy(x => x.IncludeTypes(y => suffix.Any(z => y.Name.EndsWith(z))));
+            source.IncludeTypes(y => suffix.Any(z => y.Name.EndsWith(z)));
+            return source;
         }
 
-        public static ActionCallCandidateExpression IncludeMethodsPrefixed(this ActionCallCandidateExpression expression, params string[] prefix)
+        public static ActionSource IncludeMethodsPrefixed(this ActionSource source, params string[] prefix)
         {
-            return expression.FindBy(x => x.IncludeMethods(y => prefix.Any(z => y.Name.StartsWith(z))));
+            source.IncludeMethods(y => prefix.Any(z => y.Name.StartsWith(z)));
+            return source;
         }
 
         public static bool IsContinuation(this ActionCall call)
