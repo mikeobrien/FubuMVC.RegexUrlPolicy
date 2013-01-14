@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>FubuMVC.Core</id>
-    <version>1.0.0.1401</version>
+    <version>1.0.0.1402</version>
     <title>FubuMVC.Core</title>
     <authors>Jeremy D. Miller,  Joshua Arnold,  Corey Kaylor</authors>
     <owners>Jeremy D. Miller,  Joshua Arnold,  Corey Kaylor</owners>
