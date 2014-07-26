@@ -12,6 +12,8 @@ aspnet_client
 *~
 .DS_Store
 .idea/
+Thumbs.db
+node_modules
 
 # Fubu bottle soruces
 src/*/fubu-content/*
