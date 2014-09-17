@@ -28,8 +28,8 @@ module.exports = function(grunt) {
             }
         },
         nunit: {
+            files: ['src/FubuMVC.RegexUrlPolicy.sln'],
             options: {
-                files: ['src/FubuMVC.RegexUrlPolicy.sln'],
                 teamcity: true
             }
         },

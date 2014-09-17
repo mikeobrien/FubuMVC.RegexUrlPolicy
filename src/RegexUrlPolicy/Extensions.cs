@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Hosting;
 using FubuMVC.Core.Continuations;
@@ -41,7 +42,7 @@ namespace FubuMVC.RegexUrlPolicy
 
             public override RouteData GetRouteData(HttpContextBase httpContext)
             {
-                return HostingEnvironment.VirtualPathProvider.FileExists(httpContext.Request.AppRelativeCurrentExecutionFilePath) ?
+                return File.Exists(httpContext.Server.MapPath(httpContext.Request.CurrentExecutionFilePath)) ?
                     new RouteData(this, RouteHandler) : null;
             }
 
