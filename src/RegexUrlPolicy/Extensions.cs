@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Web;
-using System.Web.Hosting;
 using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.DSL;
@@ -36,17 +35,26 @@ namespace FubuMVC.RegexUrlPolicy
             return routeConvention;
         }
 
+        public static bool CurrentRequestMapsToPhysicalFile(this HttpContextBase httpContext)
+        {
+            var path = httpContext.Request.CurrentExecutionFilePath;
+            return !Path.GetInvalidPathChars().Any(path.Contains) &&
+                   File.Exists(httpContext.Server.MapPath(path));
+        }
+
         private class IgnoreFilesRoute : Route
         {
             public IgnoreFilesRoute() : base(null, new StopRoutingHandler()) { }
 
             public override RouteData GetRouteData(HttpContextBase httpContext)
             {
-                return File.Exists(httpContext.Server.MapPath(httpContext.Request.CurrentExecutionFilePath)) ?
+                return httpContext.CurrentRequestMapsToPhysicalFile() ?
                     new RouteData(this, RouteHandler) : null;
             }
 
-            public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary routeValues)
+            public override VirtualPathData GetVirtualPath(
+                RequestContext requestContext, 
+                RouteValueDictionary routeValues)
             {
                 return null;
             }
