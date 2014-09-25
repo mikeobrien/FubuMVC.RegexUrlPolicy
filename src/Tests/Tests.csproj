@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionTests.cs" />
     <Compile Include="ConstrainTests.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IgnoreIncludeTests.cs" />

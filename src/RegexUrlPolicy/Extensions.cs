@@ -35,11 +35,17 @@ namespace FubuMVC.RegexUrlPolicy
             return routeConvention;
         }
 
+        private readonly static char[] InvalidPathChars = Path.GetInvalidPathChars().Concat(new[] {':'}).ToArray();
+
+        public static bool IsValidPath(this string path)
+        {
+            return !string.IsNullOrEmpty(path) && !InvalidPathChars.Any(path.Contains);
+        }
+
         public static bool CurrentRequestMapsToPhysicalFile(this HttpContextBase httpContext)
         {
             var path = httpContext.Request.CurrentExecutionFilePath;
-            return !Path.GetInvalidPathChars().Any(path.Contains) &&
-                   File.Exists(httpContext.Server.MapPath(path));
+            return path.IsValidPath() && File.Exists(httpContext.Server.MapPath(path));
         }
 
         private class IgnoreFilesRoute : Route
