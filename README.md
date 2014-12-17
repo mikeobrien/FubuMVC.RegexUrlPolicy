@@ -1,7 +1,7 @@
 FubuMVC Regex Url Policy
 =============
 
-[![Nuget](http://img.shields.io/nuget/v/FubuMVC.RegexUrlPolicy.svg)](http://www.nuget.org/packages/FubuMVC.RegexUrlPolicy/) [![Nuget downloads](http://img.shields.io/nuget/dt/FubuMVC.RegexUrlPolicy.svg)](http://www.nuget.org/packages/FubuMVC.RegexUrlPolicy/)
+[![Nuget](http://img.shields.io/nuget/v/FubuMVC.RegexUrlPolicy.svg?style=flat)](http://www.nuget.org/packages/FubuMVC.RegexUrlPolicy/) [![Nuget downloads](http://img.shields.io/nuget/dt/FubuMVC.RegexUrlPolicy.svg?style=flat)](http://www.nuget.org/packages/FubuMVC.RegexUrlPolicy/) [![TeamCity Build Status](https://img.shields.io/teamcity/http/build.mikeobrien.net/s/fuburegexurlpolicy.svg?style=flat)](http://build.mikeobrien.net/viewType.html?buildTypeId=fuburegexurlpolicy&guest=1)
 
 The [FubuMVC](http://mvc.fubu-project.org/) regex url policy allows you to use regular expressions to ignore/include portions of the url as well as constraining actions to verbs. The following demonstrates how to apply the policy:
         
