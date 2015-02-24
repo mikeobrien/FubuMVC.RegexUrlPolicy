@@ -10,6 +10,10 @@ namespace Tests
         [Test]
         [TestCase("", false)]
         [TestCase("/build/img/2colimghttp:/yada/1.png", false)]
+        [TestCase("/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx" +
+            "/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx" +
+            "/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx" +
+            "/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/xxxxxxxxx/", false)]
         [TestCase(@"/""http:/www.yada.com/images/2011/home-2-1-Leagues.gif/""", false)]
         [TestCase("/yada/yada.gif", true)]
         [TestCase("//MAClogo-2.png", true)]

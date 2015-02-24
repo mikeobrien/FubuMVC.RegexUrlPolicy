@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web;
 using FubuMVC.Core.Continuations;
@@ -11,6 +12,8 @@ namespace FubuMVC.RegexUrlPolicy
 {
     public static class Extensions
     {
+        private const int MaxPathLength = 260;
+
         public static ActionSource IncludeTypeNamesSuffixed(this ActionSource source, params string[] suffix)
         {
             source.IncludeTypes(y => suffix.Any(z => y.Name.EndsWith(z)));
@@ -39,7 +42,7 @@ namespace FubuMVC.RegexUrlPolicy
 
         public static bool IsValidPath(this string path)
         {
-            return !string.IsNullOrEmpty(path) && !InvalidPathChars.Any(path.Contains);
+            return !string.IsNullOrEmpty(path) && path.Length <= MaxPathLength && !InvalidPathChars.Any(path.Contains);
         }
 
         public static bool CurrentRequestMapsToPhysicalFile(this HttpContextBase httpContext)
