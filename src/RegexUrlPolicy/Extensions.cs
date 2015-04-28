@@ -31,7 +31,37 @@ namespace FubuMVC.RegexUrlPolicy
             return call.Method.ReturnType == typeof(FubuContinuation);
         }
 
-        public static RouteConventionExpression OverrideFolders(this RouteConventionExpression routeConvention)
+        public static RouteConventionExpression RegexUrlPolicy(
+            this RouteConventionExpression routeConvention)
+        {
+            routeConvention.UrlPolicy(FubuMVC.RegexUrlPolicy.RegexUrlPolicy.Create());
+            return routeConvention;
+        }
+
+        public static RouteConventionExpression RegexUrlPolicy(
+            this RouteConventionExpression routeConvention,
+            Action<RegexUrlPolicyDsl> configure)
+        {
+            routeConvention.UrlPolicy(FubuMVC.RegexUrlPolicy.RegexUrlPolicy.Create(configure));
+            return routeConvention;
+        }
+
+        public static RouteConventionExpression RegexUrlPolicy(
+            this RouteConventionExpression routeConvention, 
+            Func<ActionCall, bool> matchFilter, 
+            Action<RegexUrlPolicyDsl> configure)
+        {
+            routeConvention.UrlPolicy(FubuMVC.RegexUrlPolicy.RegexUrlPolicy.Create(matchFilter, configure));
+            return routeConvention;
+        }
+
+        public static PoliciesExpression DefaultDocument(this PoliciesExpression policies, string url)
+        {
+            policies.Add<DefaultDocument>(x => x.Url = url);
+            return policies;
+        }
+
+        public static RouteConventionExpression IgnoreFolders(this RouteConventionExpression routeConvention)
         {
             RouteTable.Routes.Add(new IgnoreFilesRoute());
             RouteTable.Routes.RouteExistingFiles = true;
