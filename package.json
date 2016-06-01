@@ -2,7 +2,7 @@
   "name": "FubuMVC.Swank",
   "version": "0.0.0",
   "dependencies": {
-    "gulp": "^3.8.10",
+    "gulp": "^3.8.11",
     "gulp-dotnet-assembly-info": "^0.1.10",
     "gulp-msbuild": "^0.2.5",
     "gulp-nunit-runner": "^0.4.1",
